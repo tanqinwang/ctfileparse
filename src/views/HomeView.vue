@@ -348,7 +348,7 @@ onMounted(async () => {
       <button
         type="button"
         class="dl-btn"
-        title="在新标签打开城通 CDN；视频/图片等可能在线预览，不一定会弹出保存"
+        title="在浏览器新标签打开城通 CDN；视频/图片等可能在线预览，不一定会弹出保存"
         @click="openLink"
       >
         <img class="dl-btn-icon" :src="asset('icon/open.svg')" alt="" />
