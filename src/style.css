@@ -1,0 +1,274 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fadcbb;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  min-height: 32px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fadcbb transparent;
+}
+
+body {
+  overflow: auto;
+  min-width: 280px;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #222;
+}
+
+a {
+  color: darkorange;
+  text-decoration: none;
+}
+
+.top-bar {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 10;
+  user-select: none;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 2px 2px 1px rgb(0 0 0 / 50%);
+  transition: background-color 0.5s;
+}
+
+.msg-zone {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  align-items: center;
+  min-width: 0;
+}
+
+.msg-icon {
+  margin: 2px;
+  width: 28px;
+  height: 28px;
+  background-size: 100% 100%;
+  flex-shrink: 0;
+}
+
+.msg-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 10px;
+  line-height: 32px;
+  font-weight: bolder;
+  font-size: 0.95rem;
+}
+
+.act-zone {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.act-btn {
+  display: flex;
+  margin: 0 2px;
+  height: 32px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease-in-out;
+}
+
+.act-btn:active {
+  transform: scale(1.2);
+}
+
+.act-icon {
+  width: 24px;
+  height: 24px;
+  background-repeat: round;
+}
+
+.main {
+  padding: 36px 2.5vw 48px;
+  min-height: 100vh;
+}
+
+.field {
+  appearance: none;
+  width: 100%;
+  height: 26px;
+  font-size: 1.2em;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid #777;
+  background: transparent;
+  padding-right: 40px;
+  transition: border-bottom 0.2s ease-out;
+}
+
+.field:focus-visible {
+  outline: none;
+  border-bottom: 4px solid #35f39a;
+}
+
+.field:hover {
+  border-bottom-width: 2px;
+}
+
+.inputdiv {
+  position: relative;
+}
+
+.input-action {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: url(/icon/optimize.svg) round;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.input-action.login {
+  background-image: url(/icon/login.svg);
+}
+
+.input-action.active {
+  filter: invert(65%) sepia(20%) saturate(754%) hue-rotate(95deg) brightness(90%) contrast(89%);
+}
+
+.input-loading {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: url(/icon/loading.svg) round;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.parse-row {
+  display: flex;
+}
+
+.parse-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #fff;
+  background: #fff;
+  padding: 4px 8px;
+  line-height: 32px;
+  font-weight: bolder;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.parse-btn:hover:not(:disabled) {
+  border-color: #777;
+  background: #aaa;
+}
+
+.parse-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.btn-icon {
+  width: 28px;
+  height: 32px;
+  background-repeat: round;
+  margin-right: 8px;
+}
+
+.half-row {
+  display: flex;
+  flex-flow: row;
+  font-size: 1em;
+}
+
+.half-row p {
+  width: 50%;
+}
+
+.downdiv {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 12px;
+  gap: 4px;
+}
+
+.dl-btn {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  margin: 4px;
+  height: 32px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  align-items: center;
+  font: inherit;
+}
+
+.dl-btn:hover {
+  background-color: rgba(134, 193, 102, 0.5);
+}
+
+.dl-btn:active {
+  background-color: rgba(134, 193, 102, 1);
+}
+
+.dl-btn-icon {
+  margin: 2px;
+  width: 28px;
+  height: 28px;
+}
+
+.dl-btn-title {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 28px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.hint {
+  margin-top: 16px;
+  line-height: 1.5;
+  color: #444;
+}
