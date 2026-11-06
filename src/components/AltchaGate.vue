@@ -82,15 +82,17 @@ onBeforeUnmount(() => window.removeEventListener('message', onMessage))
 
 <style scoped>
 .altcha-panel {
-  margin: 16px 0;
-  padding: 12px;
-  border: 1px dashed #777;
-  border-radius: 8px;
-  background: #fafafa;
+  margin: 16px 0 0;
+  padding: 14px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
 }
 .altcha-hint {
-  margin-bottom: 8px;
-  color: #444;
+  margin-bottom: 10px;
+  color: var(--color-muted);
+  font-size: 0.92rem;
 }
 .altcha-box {
   position: relative;
@@ -101,18 +103,24 @@ onBeforeUnmount(() => window.removeEventListener('message', onMessage))
   height: 64px;
   border: 0;
   display: block;
+  border-radius: var(--radius-sm);
 }
 .altcha-status {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 6px;
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  margin-top: 8px;
 }
 .altcha-retry {
-  margin-top: 8px;
-  padding: 6px 14px;
-  border: 1px solid #999;
-  border-radius: 4px;
-  background: #fff;
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
   cursor: pointer;
+  font-weight: 600;
+}
+.altcha-retry:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
 }
 </style>

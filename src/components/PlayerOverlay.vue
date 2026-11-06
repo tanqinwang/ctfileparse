@@ -6,7 +6,7 @@ defineEmits(['close'])
 </script>
 
 <template>
-  <div class="player-overlay" @click.self="$emit('close')">
+  <div class="player-overlay" role="dialog" aria-modal="true" @click.self="$emit('close')">
     <div class="player-sheet">
       <button type="button" class="close-bar" aria-label="关闭" @click="$emit('close')">关闭</button>
       <video controls preload="auto" :src="src" class="player-video" />
@@ -19,31 +19,38 @@ defineEmits(['close'])
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgb(0 0 0 / 45%);
   display: flex;
   align-items: flex-end;
+  justify-content: center;
+  backdrop-filter: blur(2px);
 }
 .player-sheet {
   width: 100%;
+  max-width: 960px;
   max-height: 90vh;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  border-radius: 10px 10px 0 0;
-  padding-bottom: 8px;
+  background: rgb(255 255 255 / 96);
+  backdrop-filter: blur(12px);
+  border-radius: 14px 14px 0 0;
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+  box-shadow: 0 -4px 24px rgb(0 0 0 / 15%);
 }
 .close-bar {
   width: 100%;
-  height: 32px;
+  height: 40px;
   border: none;
   background: transparent;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-muted);
 }
 .close-bar:hover {
-  background: #ccc;
+  background: rgb(0 0 0 / 5%);
 }
 .player-video {
   width: 100%;
-  max-height: calc(90vh - 40px);
+  max-height: calc(90vh - 48px);
+  background: #000;
 }
 </style>

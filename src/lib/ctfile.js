@@ -136,27 +136,14 @@ export async function getByID(
   if (firstCallback) firstCallback(meta)
 
   if (row.is_vip === 1) {
-    let url = null
-    switch (preferNode) {
-      case 'dx':
-        if (row.vip_dx_url) {
-          url = row.vip_dx_url
-          break
-        }
-      case 'yd':
-        if (row.vip_yd_url) {
-          url = row.vip_yd_url
-          break
-        }
-      case 'lt':
-        if (row.vip_lt_url) {
-          url = row.vip_lt_url
-          break
-        }
-      default:
-      case 'us':
-        if (row.us_downurl_a) url = row.us_downurl_a
+    const nodeKeys = {
+      dx: ['vip_dx_url', 'vip_yd_url', 'vip_lt_url', 'us_downurl_a'],
+      yd: ['vip_yd_url', 'vip_dx_url', 'vip_lt_url', 'us_downurl_a'],
+      lt: ['vip_lt_url', 'vip_dx_url', 'vip_yd_url', 'us_downurl_a'],
+      us: ['us_downurl_a', 'vip_dx_url', 'vip_yd_url', 'vip_lt_url'],
     }
+    const keys = nodeKeys[preferNode] || nodeKeys.dx
+    const url = keys.map((k) => row[k]).find(Boolean)
     if (!url) {
       return { success: false, ...meta, errormsg: '解析结果没有可用的 VIP 链接！' }
     }
